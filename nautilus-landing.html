@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Наутилус - Студенческое объединение ИПиП ТюмГУ</title>
+        <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+        <script src="https://vk.com/js/api/openapi.js?169"></script>
+    <style>
+        :root {
+            --primary-color: #81FDA3;
+            --secondary-color: #F0D067;
+            --background-color: #61B0D2;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Amiri', serif;
+            background-color: var(--background-color);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Header & Navigation */
+        header {
+            padding: 20px 0;
+      background-color: rgba(14, 53, 79, 0.876);
+      position: relative;
+      background-image: url("./обложка сообщества.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #61b0d294;
+            border-radius: 20px;
+        }
+
+        .logo {
+            
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+        }
+        .logo img{
+            width: 200px;
+            padding: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Future Games Section */
+        .future-games {
+            display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-evenly;
+        }
+
+        .game-info {
+            flex: 1;
+        }
+
+        .game-image {
+            flex: 1;
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .game-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .add-calendar-btn {
+            background: var(--primary-color);
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* Achievements Section */
+        .achievements {
+            padding: 4rem 0;
+            background-color: rgba(0, 0, 0, 0.1);
+            background-image: url("./обложка сообщества.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .achievement-card {
+            background: #61b0d2;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .vk-button {
+            display: inline-block;
+            background: #4a76a8;
+            color: var(--white);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 4rem 16px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: "TT Runs Black", sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2, h3 {
+            color: var(--secondary-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: "TT Runs Demi Bold", sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .future-games {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 0;
+            }
+
+            .game-image {
+                margin-top: 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2, h3 {
+                font-size: 1.5rem;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .achievement-card {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2, h3 {
+                font-size: 1.25rem;
+            }
+
+            .future-games {
+                padding: 1.5rem 0;
+            }
+
+            .achievements {
+                padding: 2rem 0;
+            }
+
+            .team {
+                padding: 2rem 16px;
+            }
+        }
+
+        /* Additional tablet-specific adjustments */
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            .achievements-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .vk-button, 
+            .add-calendar-btn {
+                display: none;
+            }
+        }
+         /* New styles for VK post section */
+         .vk-post {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 2rem 0;
+        }
+
+        .vk-post-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .vk-post-text {
+            flex: 1;
+        }
+
+        .vk-post-image {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .vk-post-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .vk-post-date {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .vk-post-content {
+                flex-direction: column;
+            }
+
+            .vk-post-image {
+                max-width: 100%;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <img src="лого.png" alt="лого">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#events">События</a></li>
+                    <li><a href="#achievements">Достижения</a></li>
+                    <li><a href="#team">Команда</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="events" class="future-games container">
+            <div class="game-info">
+                <h2>Будущие игры</h2>
+                <h3>Что?</h3>
+                <p>ЧГК: зимний эпизод ❄</p>
+                <h3>Где?</h3>
+                <p>СоцГум, 501 каб.</p>
+                <h3>Когда?</h3>
+                <p>16 ноября в 18:00</p>
+                <button class="add-calendar-btn">Добавить в календарь</button>
+            </div>
+            <div class="game-image">
+                <img src="https://sun9-46.userapi.com/s/v1/ig2/lLG8OMtY2rjKbHc9sNRyNoOJsapi6E0MWpZLm0bQw6Z4JdAZPO4MnNWqCqlFG0bBcxn7bCYy1MNYcQbwHhqiTOeZ.jpg?quality=96&as=32x38,48x57,72x85,108x128,160x189,240x284,360x425,480x567,540x638,640x756,720x851,1080x1276,1280x1512,1440x1702,1828x2160&from=bu&u=aE49v3TZ1i9p-y2Py3uEiLlpndujkP3lxvsFcha5FMc&cs=683x807" alt="ЧГК: зимний эпизод">
+            </div>
+        </section>
+
+        <section id="achievements" class="achievements">
+            <div class="container">
+                <h2>Наши успехи</h2>
+                <div class="achievements-grid">
+                    <div class="achievement-card">
+                        <h3>120+</h3>
+                        <p>очных встреч проведено</p>
+                    </div>
+                    <div class="achievement-card">
+                        <h3>30+</h3>
+                        <p>квизов и игр ЧГК организовано</p>
+                    </div>
+                    <div class="achievement-card">
+                        <h3>100+</h3>
+                        <p>человек каждый месяц</p>
+                    </div>
+                    <div class="achievement-card">
+                        <h3>Студвесна</h3>
+                        <p>ежегодное участие</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://vk.com/intellect_nautilus" class="vk-button">Присоединяйся к нам ВКонтакте</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="team container">
+            <h2>Наша команда</h2>
+            <p>Мы ценим достижения друг друга, поддерживаем и помогаем в осуществлении инициатив участников. Командная работа - это ядро нашей деятельности. Каждый член сообщества может проявить себя и отлично провести время в компании единомышленников.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Наутилус - Студенческое объединение ИПиП ТюмГУ</p>
+        </div>
+    </footer>
+</body>
+</html>
