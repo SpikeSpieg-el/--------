@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Наутилус - Студенческое объединение ИПиП ТюмГУ</title>
-        <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-        <script src="https://vk.com/js/api/openapi.js?169"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наутилус - Студенческое объединение ИПиП ТюмГУ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://vk.com/js/api/openapi.js?169"></script>
     <style>
         :root {
             --primary-color: #81FDA3;
@@ -400,5 +400,22 @@
             <p>© 2024 Наутилус - Студенческое объединение ИПиП ТюмГУ</p>
         </div>
     </footer>
+
+    <script>
+        const addCalendarBtn = document.querySelector('.add-calendar-btn');
+
+        addCalendarBtn.addEventListener('click', () => {
+            // Get the event details
+            const eventTitle = "ЧГК: зимний эпизод";
+            const eventLocation = "СоцГум, 501 каб.";
+            const eventDate = new Date("2023-11-16T18:00:00");
+
+            // Construct the calendar link
+            const calendarLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${eventDate.toISOString().slice(0, 10)}T${eventDate.toISOString().slice(11, 16)}%2F${eventDate.toISOString().slice(11, 16)}&location=${eventLocation}`;
+
+            // Open the calendar link in a new tab
+            window.open(calendarLink, '_blank');
+        });
+    </script>
 </body>
 </html>
